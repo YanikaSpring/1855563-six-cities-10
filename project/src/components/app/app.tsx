@@ -6,18 +6,19 @@ import FavoritesPage from '../../pages/favorite-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFound from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
+import { Offer } from '../../types/offer';
 
 
 type AppScreenProps = {
-  hotelsCount: number[];
+  offers: Offer[];
 }
 
-const App = ({hotelsCount}: AppScreenProps): JSX.Element => (
+const App = ({offers}: AppScreenProps): JSX.Element => (
   <BrowserRouter>
     <Routes>
       <Route
         path={AppRoute.Main}
-        element={<MainPage hotelsCount={hotelsCount} />}
+        element={<MainPage offers={offers} />}
       />
       <Route
         path={AppRoute.Login}
@@ -29,7 +30,7 @@ const App = ({hotelsCount}: AppScreenProps): JSX.Element => (
           <PrivateRoute
             authorizeStatus={AuthorizeStatus.Auth}
           >
-            <FavoritesPage />
+            <FavoritesPage offers={offers} />
           </PrivateRoute>
         }
       />

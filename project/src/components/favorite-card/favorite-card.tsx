@@ -1,24 +1,28 @@
 import { Link } from 'react-router-dom';
-import {Offer} from '../types/offer';
+import { Offer } from '../../types/offer';
 
-type HotelCardProps = {
+type FavoriteCardProps = {
   offer: Offer;
-  handlerFocusOffer:(id: number)=>void;
-  clearOfferId:()=>void;
-};
+}
 
-const HotelCard = (props: HotelCardProps): JSX.Element => {
-  const {offer, clearOfferId, handlerFocusOffer} = props;
-  const {price, rating, type, title, previewImage, id} = offer;
+const FavoriteCard = (props: FavoriteCardProps): JSX.Element => {
+  const {offer} = props;
+  const {isPremium, price, type, title, previewImage, id} = offer;
 
   return (
-    <article className="cities__card place-card" onMouseOver={() => handlerFocusOffer(id)} onMouseOut={() => clearOfferId()}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className="favorites__card place-card">
+      {isPremium ?
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div> : null}
+
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`/offer/${id}`}>
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt={title} />
+          <img className="place-card__image" src={previewImage} width="150" height="110" alt={title} />
         </Link>
       </div>
-      <div className="place-card__info">
+
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -31,14 +35,16 @@ const HotelCard = (props: HotelCardProps): JSX.Element => {
             <span className="visually-hidden">In bookmarks</span>
           </button>
         </div>
+
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}>{rating}</span>
+            <span style={{width: '100%'}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
+
         <h2 className="place-card__name">
-          <a href="/#">{title}</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -46,4 +52,4 @@ const HotelCard = (props: HotelCardProps): JSX.Element => {
   );
 };
 
-export default HotelCard;
+export default FavoriteCard;
