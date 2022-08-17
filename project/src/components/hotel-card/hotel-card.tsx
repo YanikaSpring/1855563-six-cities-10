@@ -1,20 +1,21 @@
-import { Link } from 'react-router-dom';
-import {Offer} from '../types/offer';
+import { generatePath, Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import {Offer} from '../../types/offer';
 
 type HotelCardProps = {
   offer: Offer;
-  handlerFocusOffer:(id: number)=>void;
-  clearOfferId:()=>void;
+  onFocusOffer: (id: number) => void;
+  onClearOfferId: () => void;
 };
 
 const HotelCard = (props: HotelCardProps): JSX.Element => {
-  const {offer, clearOfferId, handlerFocusOffer} = props;
+  const {offer, onClearOfferId, onFocusOffer} = props;
   const {price, rating, type, title, previewImage, id} = offer;
 
   return (
-    <article className="cities__card place-card" onMouseOver={() => handlerFocusOffer(id)} onMouseOut={() => clearOfferId()}>
+    <article className="cities__card place-card" onMouseOver={() => onFocusOffer(id)} onMouseOut={() => onClearOfferId()}>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${id}`}>
+        <Link to={generatePath(AppRoute.Offer, { id: String(id)})}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={title} />
         </Link>
       </div>

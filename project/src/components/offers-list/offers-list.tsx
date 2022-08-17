@@ -1,15 +1,15 @@
-import HotelCard from '../../components/hotel-card';
+import HotelCard from '../hotel-card/hotel-card';
 import { Offer } from '../../types/offer';
 
 type OfferListProps = {
   offers: Offer[];
-  handlerFocusOffer:(id: number)=>void;
-  clearOfferId:()=>void;
+  onFocusOffer: (id: number) => void;
+  onClearOfferId: () => void;
 }
 
-const OfferList = ({ offers, handlerFocusOffer, clearOfferId }: OfferListProps): JSX.Element => (
+const OfferList = ({ offers, onFocusOffer, onClearOfferId }: OfferListProps): JSX.Element => (
   <div className="cities__places-list places__list tabs__content">
-    {offers.map((offer) => <HotelCard key={offer.id} offer={offer} handlerFocusOffer={handlerFocusOffer} clearOfferId={clearOfferId} />)}
+    {offers.map((offer) => <HotelCard key={offer.id} offer={offer} onFocusOffer={onFocusOffer} onClearOfferId={onClearOfferId} />)}
   </div>
 );
 

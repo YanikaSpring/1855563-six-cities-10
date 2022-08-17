@@ -8,13 +8,13 @@ type MainPageProps = {
 }
 
 const MainPage = ({offers}: MainPageProps): JSX.Element => {
-  const [activeOfferId, setActiveOfferId] = useState(0);
+  const [, setActiveOfferId] = useState(0);
 
-  const handlerFocusOffer = (id: number): void => {
+  const onFocusOffer = (id: number): void => {
     setActiveOfferId(id);
   };
 
-  const clearOfferId = (): void => {
+  const onClearOfferId = (): void => {
     setActiveOfferId(0);
   };
 
@@ -79,7 +79,7 @@ const MainPage = ({offers}: MainPageProps): JSX.Element => {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OfferList offers={offers} handlerFocusOffer={handlerFocusOffer} clearOfferId={clearOfferId} />
+              <OfferList offers={offers} onFocusOffer={onFocusOffer} onClearOfferId={onClearOfferId} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
