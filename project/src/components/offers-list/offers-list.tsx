@@ -9,7 +9,15 @@ type OfferListProps = {
 
 const OfferList = ({ offers, onFocusOffer, onClearOfferId }: OfferListProps): JSX.Element => (
   <div className="cities__places-list places__list tabs__content">
-    {offers.map((offer) => <HotelCard key={offer.id} offer={offer} onFocusOffer={onFocusOffer} onClearOfferId={onClearOfferId} />)}
+    {offers.map((offer) => (
+      <HotelCard
+        key={offer.id}
+        cardType="cities"
+        offer={offer}
+        onFocusOffer={onFocusOffer}
+        onClearOfferId={onClearOfferId}
+      />
+    ))}
   </div>
 );
 

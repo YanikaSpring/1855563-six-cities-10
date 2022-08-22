@@ -5,11 +5,11 @@ export const offers: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 2.351556,
-        longitude: 48.856663,
+        latitude: 52.373057,
+        longitude: 4.892557,
         zoom: 10,
       },
-      name: 'Paris',
+      name: 'Amsterdam',
     },
     description: 'The hotel is conveniently located in one of the most famous shopping areas of Paris, within walking distance of the Arc de Triomphe and the Champs Elysées.',
     goods: [
@@ -28,8 +28,8 @@ export const offers: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 2.295095,
-      longitude: 48.875676,
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
       zoom: 10,
     },
     maxAdults: 2,
@@ -43,11 +43,11 @@ export const offers: Offer[] = [
     bedrooms: 1,
     city: {
       location: {
-        latitude: 4.352131,
-        longitude: 50.854283,
+        latitude: 52.373057,
+        longitude: 4.892557,
         zoom: 10,
       },
-      name: 'Brussels',
+      name: 'Amsterdam',
     },
     description: 'All rooms at First Euroflat have a minibar and tea/coffee making facilities.',
     goods: [
@@ -66,8 +66,8 @@ export const offers: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 4.381966,
-      longitude: 50.844738,
+      latitude: 52.369553943508,
+      longitude:  4.85309666406198,
       zoom: 10,
     },
     maxAdults: 2,
@@ -81,8 +81,8 @@ export const offers: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 4.892557,
-        longitude: 52.373057,
+        latitude: 52.373057,
+        longitude: 4.892557,
         zoom: 10,
       },
       name: 'Amsterdam',
@@ -104,8 +104,8 @@ export const offers: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 4.77885625,
-      longitude: 52.38166079,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
       zoom: 10,
     },
     maxAdults: 4,
@@ -119,11 +119,11 @@ export const offers: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 6.938399,
-        longitude: 50.930779,
+        latitude: 52.373057,
+        longitude: 4.892557,
         zoom: 10,
       },
-      name: 'Cologne',
+      name: 'Amsterdam',
     },
     description: 'You can walk to the beach in just 2 minutes. Rheinblick Appartments in Cologne offers apartments with river views.',
     goods: [
@@ -142,8 +142,8 @@ export const offers: Offer[] = [
     isFavorite: true,
     isPremium: false,
     location: {
-      latitude: 6.938399,
-      longitude: 50.930779,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 10,
     },
     maxAdults: 4,

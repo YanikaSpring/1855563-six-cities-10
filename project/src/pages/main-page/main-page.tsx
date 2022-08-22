@@ -2,13 +2,15 @@ import Header from '../../components/header/header';
 import { Offer } from '../../types/offer';
 import OfferList from '../../components/offers-list/offers-list';
 import {useState} from 'react';
+import Map from '../../components/map/map';
+import { CITY } from '../../const';
 
 type MainPageProps = {
   offers: Offer[];
 }
 
 const MainPage = ({offers}: MainPageProps): JSX.Element => {
-  const [, setActiveOfferId] = useState(0);
+  const [activeOfferId, setActiveOfferId] = useState(0);
 
   const onFocusOffer = (id: number): void => {
     setActiveOfferId(id);
@@ -82,7 +84,7 @@ const MainPage = ({offers}: MainPageProps): JSX.Element => {
               <OfferList offers={offers} onFocusOffer={onFocusOffer} onClearOfferId={onClearOfferId} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map city={CITY} offers={offers} activeOfferId={activeOfferId}/>
             </div>
           </div>
         </div>
