@@ -1,7 +1,12 @@
 import Header from '../../components/header/header';
-import ReviewForm from '../../components/review-form/review-form';
+import ReviewForm from '../../components/review/review-form';
+import { ReviewType } from '../../types/review';
 
-const OfferPage = (): JSX.Element => (
+type OfferPageProps = {
+  review: ReviewType;
+}
+
+const OfferPage = ({review}: OfferPageProps): JSX.Element => (
   <div className="page">
     <Header isFull />
     <main className="page__main page__main--property">
@@ -123,7 +128,7 @@ const OfferPage = (): JSX.Element => (
                 </p>
               </div>
             </div>
-            <ReviewForm />
+            <ReviewForm review={review}/>
           </div>
         </div>
         <section className="property__map map"></section>
