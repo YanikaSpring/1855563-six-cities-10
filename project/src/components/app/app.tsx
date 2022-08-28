@@ -7,12 +7,10 @@ import OfferPage from '../../pages/offer-page/offer-page';
 import NotFound from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../../components/private-route/private-route';
 import { Offer } from '../../types/offer';
-import { ReviewType } from '../../types/review';
 
 
 type AppScreenProps = {
   offers: Offer[];
-  review: ReviewType;
 }
 
 const App = ({offers}: AppScreenProps): JSX.Element => (
@@ -38,7 +36,7 @@ const App = ({offers}: AppScreenProps): JSX.Element => (
       />
       <Route
         path={AppRoute.Offer}
-        element={<OfferPage />}
+        element={<OfferPage offers={offers} />}
       />
       <Route
         path="*"

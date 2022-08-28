@@ -20,10 +20,10 @@ export type Offer = {
   bedrooms: number;
   city: City;
   description: string;
-  goods: [string];
+  goods: string[];
   host: Host;
   id: number;
-  images: [string];
+  images: string[];
   isFavorite: boolean;
   isPremium: boolean;
   location: Location;

@@ -2,12 +2,12 @@ import { ReviewType } from '../../types/review';
 import Review from './review';
 
 type ReviewListProps = {
-  review: ReviewType;
+  reviews: ReviewType[];
 }
 
-const ReviewList = ({review}: ReviewListProps) => (
+const ReviewList = ({reviews}: ReviewListProps) => (
   <ul className="reviews__list">
-    <Review review={review}/>
+    {reviews.map((review) => (<Review key={review.id} review={review}/>))}
   </ul>
 );
 

@@ -4,10 +4,10 @@ import Rating from './rating';
 import ReviewList from './review-list';
 
 type ReviewFormProps = {
-  review: ReviewType;
+  reviews: ReviewType[];
 }
 
-const ReviewForm = ({review}: ReviewFormProps): JSX.Element => {
+const ReviewForm = ({reviews}: ReviewFormProps): JSX.Element => {
   const [formData, setFormData] = useState({
     review: '',
     rating: '',
@@ -20,8 +20,8 @@ const ReviewForm = ({review}: ReviewFormProps): JSX.Element => {
 
   return (
     <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-      <ReviewList review={review}/>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+      <ReviewList reviews={reviews}/>
       <form className="reviews__form form" action="#" method="post">
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <Rating handleFieldChange={handleFieldChange}/>
