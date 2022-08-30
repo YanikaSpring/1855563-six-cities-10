@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/header/header';
 import ButtonBookmark from '../../components/hotel-card/button-bookmark';
@@ -7,7 +6,7 @@ import OfferList from '../../components/offers-list/offers-list';
 import PropertyGallery from '../../components/property/property-gallery';
 import PropertyInsideList from '../../components/property/property-inside-list';
 import ReviewForm from '../../components/review/review-form';
-import { CITY } from '../../const';
+import { CITY, OFFER_NEAR_AMOUNT } from '../../const';
 import { reviews } from '../../mocks/reviews';
 import { Offer } from '../../types/offer';
 import NotFound from '../not-found-page/not-found-page';
@@ -17,26 +16,13 @@ type OfferPageProps = {
 }
 
 const OfferPage = ({offers}: OfferPageProps): JSX.Element => {
-  const [activeOfferId, setActiveOfferId] = useState(0);
-
-  const onFocusOffer = (id: number): void => {
-    setActiveOfferId(id);
-  };
-
-  const onClearOfferId = (): void => {
-    setActiveOfferId(0);
-  };
-
   const {id} = useParams();
   const offer = offers.find((e) => e.id === Number(id));
 
   if (offer === undefined) {
     return <NotFound />;
   }
-
-  if (offers.length > 3) {
-    offers = offers.slice(0, 3);
-  }
+  offers = offers.filter((e) => e.id !== offer.id).slice(0, OFFER_NEAR_AMOUNT);
 
   return (
     <div className="page">
@@ -55,7 +41,7 @@ const OfferPage = ({offers}: OfferPageProps): JSX.Element => {
                 <h1 className="property__name">
                   {offer.title}
                 </h1>
-                <ButtonBookmark  className='property__bookmark-button' buttonType='offer'/>
+                <ButtonBookmark className='property__bookmark-button' buttonType='offer'/>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
@@ -105,13 +91,13 @@ const OfferPage = ({offers}: OfferPageProps): JSX.Element => {
               <ReviewForm reviews={reviews}/>
             </div>
           </div>
-          <Map city={CITY} offers={offers} activeOfferId={activeOfferId} className="property__map"/>
+          <Map city={CITY} offers={offers} offerProperty={offer} className="property__map"/>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              <OfferList offers={offers} onFocusOffer={onFocusOffer} onClearOfferId={onClearOfferId} />
+              <OfferList offers={offers} />
             </div>
           </section>
         </div>

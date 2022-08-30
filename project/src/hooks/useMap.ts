@@ -1,5 +1,5 @@
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
-import { LatLng, Map, TileLayer } from 'leaflet';
+import { Map, TileLayer } from 'leaflet';
 import { City } from '../types/map';
 
 const LAYER = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';

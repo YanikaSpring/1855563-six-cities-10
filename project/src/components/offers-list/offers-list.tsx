@@ -3,8 +3,8 @@ import { Offer } from '../../types/offer';
 
 type OfferListProps = {
   offers: Offer[];
-  onFocusOffer: (id: number) => void;
-  onClearOfferId: () => void;
+  onFocusOffer?: (id: number) => void;
+  onClearOfferId?: () => void;
 }
 
 const OfferList = ({ offers, onFocusOffer, onClearOfferId }: OfferListProps): JSX.Element => (

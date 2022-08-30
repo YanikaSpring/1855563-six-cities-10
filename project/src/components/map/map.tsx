@@ -9,8 +9,9 @@ import { Icon, LatLng, LayerGroup, Marker } from 'leaflet';
 type MapProps = {
   city: City;
   offers: Offer[];
-  activeOfferId: number;
+  activeOfferId?: number;
   className: string;
+  offerProperty?: Offer;
 }
 
 const defaultCustomIcon = new Icon({
@@ -25,7 +26,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-const Map = ({city, offers, activeOfferId, className}: MapProps): JSX.Element => {
+const Map = ({city, offers, offerProperty, activeOfferId, className}: MapProps): JSX.Element => {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -33,7 +34,6 @@ const Map = ({city, offers, activeOfferId, className}: MapProps): JSX.Element =>
     if (!map) {
       return;
     }
-
     const layerGroup = new LayerGroup().addTo(map);
     offers.forEach((offer) => {
       const marker = new Marker({
@@ -48,6 +48,19 @@ const Map = ({city, offers, activeOfferId, className}: MapProps): JSX.Element =>
         .addTo(layerGroup);
     });
 
+    if (offerProperty !== undefined) {
+      const marker = new Marker({
+        lat: offerProperty.location.latitude,
+        lng: offerProperty.location.longitude,
+      });
+
+      marker
+        .setIcon(
+          currentCustomIcon
+        )
+        .addTo(layerGroup);
+    }
+
     if (map !== null) {
       map.panTo(new LatLng(city.lat, city.lng));
     }
@@ -56,7 +69,7 @@ const Map = ({city, offers, activeOfferId, className}: MapProps): JSX.Element =>
       layerGroup.clearLayers();
     };
 
-  }, [map, offers, activeOfferId]);
+  }, [map, offers, offerProperty, activeOfferId]);
 
   return (
     <section className={`${className} map`} ref={mapRef}></section>

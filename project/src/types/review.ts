@@ -1,4 +1,4 @@
-export type  User = {
+export type User = {
   avatarUrl: string
   id: number
   isPro: boolean

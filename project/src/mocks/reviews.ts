@@ -27,11 +27,11 @@ export const reviews: ReviewType[] = [{
 {
   comment: 'We are forced to start from the fact that the existing theory plays an important role in shaping the forms of influence.',
   date: 'February 2020',
-  id: 264,
+  id: 123,
   rating: 7,
   user: {
     avatarUrl: 'https://i.pinimg.com/564x/47/8e/e9/478ee91a22f6dd3052e6759a3991df7b.jpg',
-    id: 3642,
+    id: 3856,
     isPro: true,
     name: 'Mia'
   }

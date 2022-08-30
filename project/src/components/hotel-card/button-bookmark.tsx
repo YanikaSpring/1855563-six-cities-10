@@ -14,7 +14,7 @@ const buttonIconSize = {
     width: 31,
     height: 33
   }
-}
+};
 
 const ButtonBookmark = ({className, buttonType}: ButtonBookmarkProps): JSX.Element => {
 
@@ -22,12 +22,13 @@ const ButtonBookmark = ({className, buttonType}: ButtonBookmarkProps): JSX.Eleme
   const height = buttonIconSize[buttonType].height;
 
   return (
-  <button className={`${className} button`} type="button">
-    <svg className="place-card__bookmark-icon" width={width} height={height}>
-      <use xlinkHref="#icon-bookmark"></use>
-    </svg>
-    <span className="visually-hidden">In bookmarks</span>
-  </button>
-)};
+    <button className={`${className} button`} type="button">
+      <svg className="place-card__bookmark-icon" width={width} height={height}>
+        <use xlinkHref="#icon-bookmark"></use>
+      </svg>
+      <span className="visually-hidden">In bookmarks</span>
+    </button>
+  );
+};
 
 export default ButtonBookmark;

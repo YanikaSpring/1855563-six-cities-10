@@ -6,6 +6,8 @@ import Map from '../../components/map/map';
 import { CITY } from '../../const';
 import LocationsList from '../../components/locations-list/locations-list';
 import PlacesSorting from '../../components/locations-list/places-sorting';
+import { useParams } from 'react-router-dom';
+import NotFound from '../not-found-page/not-found-page';
 
 type MainPageProps = {
   offers: Offer[];
@@ -14,8 +16,15 @@ type MainPageProps = {
 const MainPage = ({offers}: MainPageProps): JSX.Element => {
   const [activeOfferId, setActiveOfferId] = useState(0);
 
-  const onFocusOffer = (id: number): void => {
-    setActiveOfferId(id);
+  const {id} = useParams();
+  const offer = offers.find((e) => e.id === Number(id));
+
+  if (offer === undefined) {
+    return <NotFound />;
+  }
+
+  const onFocusOffer = (offerId: number): void => {
+    setActiveOfferId(offerId);
   };
 
   const onClearOfferId = (): void => {
